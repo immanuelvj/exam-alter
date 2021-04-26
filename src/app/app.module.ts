@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppService } from './app.service';
+import { FacultyScheduleComponent } from './faculty-schedule/faculty-schedule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    FacultyScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { AppService } from './app.service';
     RouterModule.forRoot([
       { path: 'login', component:HomeComponent, pathMatch: 'full'},
       { path: '', redirectTo: 'login', pathMatch: 'full' },
+      {path:'faculty_schedule',component:FacultyScheduleComponent},
       {path:'dashboard',component:DashboardComponent},
       
       

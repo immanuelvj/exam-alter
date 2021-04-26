@@ -34,3 +34,18 @@ input::placeholder{
     color:gray;
     font-weight:200;
 }
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    border:0px
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    border:0px
+  }
+}

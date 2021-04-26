@@ -64,4 +64,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  routeToFacSchedule = () =>{
+    this.router.navigate(['/faculty_schedule'])
+  }
+
 }

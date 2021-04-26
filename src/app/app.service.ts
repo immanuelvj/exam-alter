@@ -52,4 +52,7 @@ export class AppService {
     return this.http.post(`${this.url}/api/v1/users/logout`, params);
   } // end logout function
 
+  public getSchedule():Observable<any>{
+    return this.http.get(`${this.url}/api/v1/schedule/view/all`)
+  }
 }
