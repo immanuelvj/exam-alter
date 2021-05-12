@@ -38,12 +38,12 @@
 }
 
 .headingfont{
-    font-family: Montserrat;font-size:20px;color: #b81250;font-weight: 800;
+    font-family: Montserrat,sans-serif;font-size:20px;color: #b81250;font-weight: 800;
 }
 
 
 .bodyfont{
-    font-family: Montserrat;font-size:13.5px;color:black;font-weight:500;
+    font-family: Montserrat,sans-serif;font-size:13.5px;color:black;font-weight:500;
 }
 
 .bodybg{

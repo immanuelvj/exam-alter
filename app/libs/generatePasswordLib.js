@@ -6,8 +6,8 @@ let logger = require('../libs/loggerLib')
 
 let hashpassword = (myPlaintextPassword) => {
   let salt = bcrypt.genSaltSync(saltRounds)
-  let hash = bcrypt.hashSync(myPlaintextPassword, salt)
-  return hash
+   
+  return bcrypt.hashSync(myPlaintextPassword, salt)
 }
 
 

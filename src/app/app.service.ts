@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { Observable} from 'rxjs';
 
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse, HttpParams } from "@angular/common/http";
+import { HttpClient,HttpParams} from '@angular/common/http';
+
 
 
 @Injectable()
