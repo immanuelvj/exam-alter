@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
       }
+  
+  login_enter = (event:any) =>{
+    alert(event)
+  }
 
   login = () =>{
     if(!this.email){
