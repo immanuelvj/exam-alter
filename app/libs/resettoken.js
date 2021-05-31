@@ -11,7 +11,7 @@ let generateToken = (data, cb) => {
     let claims = {
       jwtid: shortid.generate(),
       iat: Date.now(),
-      exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24),
+      exp: Math.floor(Date.now() / 1000) + (5 * 60),
       sub: 'authToken',
       iss: 'examadmin',
       data: data

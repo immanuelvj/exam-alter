@@ -55,4 +55,21 @@ export class AppService {
   public getSchedule():Observable<any>{
     return this.http.get(`${this.url}/api/v1/schedule/view/all`)
   }
+
+  public getPasswordRecover(data): Observable<any> {
+    const params = new HttpParams()
+      .set('email', data.email)
+    return this.http.post(`${this.url}/api/v1/users/recoverPassword`, params);
+  }
+
+  //set Password Email
+  public setPasswordRecover(data): Observable<any> {
+    const params = new HttpParams()
+      .set('userId', data.userId)
+      .set('authToken', data.authToken)
+      .set('password', data.password)
+    return this.http.post(`${this.url}/api/v1/users/resetPassword`, params);
+
+  }
+
 }

@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {Cookie} from 'ng2-cookies/ng2-cookies';
-import { AppService } from '../app.service';
+import { AppService } from '../../app.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class HomeComponent implements OnInit {
+export class LoginComponent implements OnInit {
+
   public email
   public password
   constructor(private toastr: ToastrService,public appService:AppService,public router:Router) {}

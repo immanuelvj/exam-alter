@@ -8,25 +8,28 @@ import { ToastrModule } from 'ngx-toastr';
 
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppService } from './app.service';
 import { FacultyScheduleComponent } from './faculty-schedule/faculty-schedule.component';
+import { LoginComponent } from './user/login/login.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    
     DashboardComponent,
     FacultyScheduleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    UserModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     RouterModule.forRoot([
-      { path: 'login', component:HomeComponent, pathMatch: 'full'},
+      { path: 'login', component:LoginComponent, pathMatch: 'full'},
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       {path:'faculty_schedule',component:FacultyScheduleComponent},
       {path:'dashboard',component:DashboardComponent},
