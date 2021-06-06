@@ -12,6 +12,10 @@ let userSchema = new Schema({
     index: true,
     unique: true
   },
+  usertype:{
+    type:String,
+    default:'faculty'
+  },
   firstName: {
     type: String,
     default: ''

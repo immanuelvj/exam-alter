@@ -1,0 +1,334 @@
+<div class="container-fluid background">
+
+  <div class="row">
+    <div class="col-xs-12">
+
+
+      <div class="insidebox" style="padding:40px;">
+        <!-- nav-->
+        <div class="row text-center">
+          <div class="col-xs-2" (click)="activate('create')" style="padding: 5px;cursor: pointer;"
+            [ngClass]="{'isactive':create == true,'isnotactive':create == false}">
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Create or Edit User</p>
+          </div>
+          <div class="col-xs-2" (click)="activate('exam')" style="padding: 5px;cursor: pointer;"
+            [ngClass]="{'isactive':exam == true,'isnotactive':exam == false}">
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Create Exam Schedule</p>
+          </div>
+          <div class="col-xs-2" (click)="activate('details')" style="padding: 5px;cursor: pointer;"
+            [ngClass]="{'isactive':details == true,'isnotactive':details == false}">
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">User List</p>
+          </div>
+          <div class="col-xs-2" (click)="activate('examdetails')" style="padding: 5px;cursor: pointer;"
+            [ngClass]="{'isactive':examdetails == true,'isnotactive':examdetails == false}">
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Exam List</p>
+          </div>
+          <div class="col-xs-2" (click)="activate('staff')" style="padding: 5px;cursor: pointer;"
+            [ngClass]="{'isactive':staff == true,'isnotactive':staff == false}">
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Reschedule Request</p>
+          </div>
+
+          <div class="col-xs-2 hover" style="padding: 5px;cursor: pointer;" (click)="logout()">
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;text-align: right;">Logout</p>
+          </div>
+        </div>
+        <!-- end nav -->
+
+        <!-- create or edit  -->
+
+        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="create">
+          <div class="col-xs-12">
+
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Create or edit User</p>
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-xs-1">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Exisiting User</p>
+
+
+              </div>
+              <div class="col-xs-6">
+                <select [(ngModel)]="userId" (click)="changevalue()" placeholder="Select a user">
+                  <option [value]="null">Select a User</option>
+                  <option *ngFor="let obj of users" [value]="obj.userId">{{obj.email}}</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="row" style="margin-top: 40px;">
+              <div class="col-xs-6">
+                <input type="text" placeholder="First name" name="firstName" [(ngModel)]="firstName" />
+              </div>
+              <div class="col-xs-6">
+                <input type="text" placeholder="Last name" name="lastName" [(ngModel)]="lastName" />
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-6">
+                <input type="text" placeholder="Email" name="email" [(ngModel)]="email" />
+              </div>
+              <div class="col-xs-6">
+                <input type="text" placeholder="Phone No" name="mobileNumber" [(ngModel)]="mobileNumber" />
+              </div>
+            </div>
+
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-6">
+
+                <select [(ngModel)]="department"> // value is a string or number
+                  <option [value]="null">Select a Department</option>
+                  <option *ngFor="let obj of departments" [value]="obj.value">{{obj.name}}</option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <input type="password" placeholder="Password" name="password" [(ngModel)]="password" />
+              </div>
+            </div>
+
+
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-6">
+
+                <select [(ngModel)]="usertype">
+                  <option [value]="null">Select Usertype</option>
+                  <option *ngFor="let obj of usertypes" [value]="obj.value">{{obj.name}}</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-12 text-center">
+
+                <button class="btn" (click)="createUser()"
+                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Create
+                  / Update</button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- end create or edit-->
+
+
+        <!-- Create exam schedule or edit -->
+
+        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="exam">
+          <div class="col-xs-12">
+
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Create or edit Exam Schedule
+            </p>
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-xs-1">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Exisiting Schedule</p>
+
+
+              </div>
+              <div class="col-xs-6">
+                <select [(ngModel)]="scheduleId" (click)="changevalueschedule()" placeholder="Select a Schedule">
+                  <option [value]="null">Select a Schedule</option>
+                  <option *ngFor="let obj of schedules" [value]="obj.scheduleId">{{obj.HallNo}} {{obj.Date}}</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="row" style="margin-top: 40px;">
+              <div class="col-xs-6">
+                <input type="text" placeholder="Hall No" name="hallNo" [(ngModel)]="hallNo" />
+              </div>
+              <div class="col-xs-6">
+                <input type="date" placeholder="Date" name="examdate" [(ngModel)]="examdate" />
+              </div>
+            </div>
+
+
+
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-6">
+
+                <select [(ngModel)]="examslot"> // value is a string or number
+                  <option [value]="null">Select a slot</option>
+                  <option *ngFor="let obj of slot" [ngValue]="obj">{{obj.name}}</option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <div class="col-xs-6">
+                  <select [(ngModel)]="examinerId" (click)="changevalueexaminer()" placeholder="Select a faculty">
+                    <option [value]="null">Select a User</option>
+                    <option *ngFor="let obj of users" [value]="obj.userId">{{obj.email}}</option>
+                  </select>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-12 text-center">
+
+                <button class="btn" (click)="createExam()"
+                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Create
+                  / Update</button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+        <!--end create exam schedule -->
+
+        <!--user List -->
+
+
+        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="details">
+          <div class="col-xs-12">
+
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">User List and Roles
+            </p>
+            <div class="row" style="margin-top: 40px;">
+              <div class="col-xs-1">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;"></p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Name</p>
+              </div>
+              <div class="col-xs-3">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Email</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Department</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Phone</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Role</p>
+              </div>
+            </div>
+
+
+            <div class="row" style="margin-top:10px;" *ngFor="let user of users">
+              <div class="col-xs-1">
+                <p style="font-size: 12px;font-family: Montserrat,sans-serif;font-weight: 800;"><input type="checkbox"  (click)="addId(user.userId)"></p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{user.firstName}} {{user.LastName}}</p>
+              </div>
+              <div class="col-xs-3">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{user.email}}</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{user.department}}</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{user.mobileNumber}}</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{user.usertype}}</p>
+              </div>
+            </div>
+
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-12 text-center">
+
+                <button class="btn" (click)="deleteUser()"
+                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Delete</button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- end user list -->
+
+
+        <!-- Schedule List-->
+
+        
+        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="examdetails">
+          <div class="col-xs-12">
+
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Exam Schedule
+            </p>
+            <div class="row" style="margin-top: 40px;">
+              <div class="col-xs-1">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;"></p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo</p>
+              </div>
+              <div class="col-xs-3">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Faculty Name</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Department</p>
+              </div>
+
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Timing</p>
+              </div>
+            </div>
+
+
+            <div class="row" style="margin-top:10px;" *ngFor="let schedule of schedules">
+              <div class="col-xs-1">
+                <p style="font-size: 12px;font-family: Montserrat,sans-serif;font-weight: 800;"><input type="checkbox"  (click)="addsId(schedule.scheduleId)"></p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.HallNo}}</p>
+              </div>
+              <div class="col-xs-3">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Name}}</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Department}}</p>
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Date}}</p>
+              </div>
+
+            </div>
+
+
+            <div class="row" style="margin-top:40px;">
+              <div class="col-xs-12 text-center">
+
+                <button class="btn" (click)="deleteSchedule()"
+                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Delete</button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+        <!-- end Schedule List-->
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row text-center" style="margin-top: 30px;">
+    <p style="font-family:Montserrat;font-weight: 800;">Designed and Developed by the JUSTICE LEAGUE OF AMRITA CBE</p>
+  </div>
+
+
+
+
+</div>

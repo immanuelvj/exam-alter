@@ -35,6 +35,14 @@ export class AppService {
 
   }
 
+  
+  public signupFunction(data): Observable<any> {
+
+
+    return this.http.post(`${this.url}/api/v1/users/signup`, data);
+  } // end of signinFunction function.
+
+
 
   public signinFunction(data): Observable<any> {
 
@@ -44,6 +52,18 @@ export class AppService {
 
     return this.http.post(`${this.url}/api/v1/users/login`, params);
   } // end of signinFunction function.
+
+
+
+  public adminsigninFunction(data): Observable<any> {
+
+    const params = new HttpParams()
+      .set('email', data.email)
+      .set('password', data.password);
+
+    return this.http.post(`${this.url}/api/v1/users/adminlogin`, params);
+  } // end of signinFunction function.
+
 
   public logout(): Observable<any> {
     const params = new HttpParams()
@@ -71,5 +91,37 @@ export class AppService {
     return this.http.post(`${this.url}/api/v1/users/resetPassword`, params);
 
   }
+
+  public getalluser(): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/users/view/all`);
+  }
+
+  public getuserData(data): Observable<any> {
+    return this.http.get(`${this.url}/api/v1/users/${data}/details`);
+  }
+
+  public edituserData(data): Observable<any> {
+    return this.http.put(`${this.url}/api/v1/users/${data.userId}/edit`,data);
+  }
+
+  public deleteuserData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/users/delete`,data);
+  }
+
+  
+  public deletescheduleData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/schedule/delete`,data);
+  }
+
+  
+  public createScheduleData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/schedule/create`,data);
+  }
+
+  
+  public editScheduleData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/schedule/edit`,data);
+  }
+
 
 }

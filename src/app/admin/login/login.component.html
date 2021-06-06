@@ -16,9 +16,9 @@
               <div class="col-xs-10">
 
                 <p style="font-family: Orelega One ,cursive;font-size:4.5rem;font-weight: 300px;"><span><img alt="user"
-                      src="../../assets/vector-creator.png" style="width:80px;" />Password rst</span><span
+                      src="../../assets/vector-creator.png" style="width:80px;" /> Login</span><span
                     style="font-family: Montserrat,sans-serif;;font-size: 2rem;margin-left: 20px;font-weight:700;">-
-                    Faculty Portal</span></p>
+                    Admin Portal</span></p>
 
               </div>
             </div>
@@ -27,32 +27,31 @@
             <div class="row" style="margin-left:100px;margin-top:40px;">
               <div class="col-xs-10">
 
-                <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="password" id="password"
-                  (keydown.enter)="passwordreset()" />
+                <input type="text" placeholder="Enter Username" [(ngModel)]="email" name="email" id="email"
+                  (keydown.enter)="login()" />
               </div>
             </div>
 
             <div class="row" style="margin-left:100px;margin-top:50px;">
               <div class="col-xs-10">
 
-                <input type="password" placeholder="Enter Confirm Password" ame="confirmpassword"
-                  [(ngModel)]="confirmpassword" id="confirmpassword" (keydown.enter)="passwordreset()" />
+                <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" id="password"
+                  (keydown.enter)="login()" />
               </div>
             </div>
 
             <div class="row" style="margin-left:100px;margin-top:70px;">
               <div class="col-xs-10">
 
-                <button type="submit" (click)="passwordreset()" class="btn"
-                  style="background-color:#b81250;width: 60%;height: 50px;border-radius: 40px;border:0px;color: white;font-size:20px;font-family:Montserrat,sans-serif;;">Change
-                  Password</button>
+                <button type="submit" (click)="login()" class="btn"
+                  style="background-color:#b81250;width: 60%;height: 50px;border-radius: 40px;border:0px;color: white;font-size:20px;font-family:Montserrat,sans-serif;;">Login</button>
               </div>
             </div>
 
             <div class="row" style="margin-left:100px;margin-top:30px;">
               <div class="col-xs-10">
                 <p style="font-family:Montserrat, sans-serif;cursor: pointer;" id="forget_password"
-                  [routerLink]="['/login']">Nope , I remember the password Now ! , Login</p>
+                  [routerLink]="['/reset']">Forgot Password ? Reset Now</p>
               </div>
             </div>
 
@@ -74,7 +73,6 @@
 
     </div>
   </div>
-
 
   <div class="row text-center">
     <p style="font-family:Montserrat;font-weight: 800;">Designed and Developed by the JUSTICE LEAGUE OF AMRITA CBE</p>

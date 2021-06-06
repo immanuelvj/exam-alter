@@ -15,22 +15,28 @@ import { FacultyScheduleComponent } from './faculty-schedule/faculty-schedule.co
 import { LoginComponent } from './user/login/login.component';
 import { UserModule } from './user/user.module';
 
+import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+import { AdminModule } from './admin/admin.module';
+import { LoginGuardService } from './login.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
     
     DashboardComponent,
-    FacultyScheduleComponent
+    FacultyScheduleComponent,
+  
   ],
   imports: [
     BrowserModule,
     FormsModule,
     UserModule,
+    AdminModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     RouterModule.forRoot([
-      { path: 'login', component:LoginComponent, pathMatch: 'full'},
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component:LoginComponent, canActivate:[LoginGuardService]},
+      { path:'', redirectTo: 'login',pathMatch:'full'},
       {path:'faculty_schedule',component:FacultyScheduleComponent},
       {path:'dashboard',component:DashboardComponent},
       
@@ -38,7 +44,7 @@ import { UserModule } from './user/user.module';
     ]),
     HttpClientModule,
   ],
-  providers: [AppService],
+  providers: [AppService,LoginGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import {RouterModule,Router} from '@angular/router';
 
 import { ResetComponent } from './reset/reset.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { LoginGuardService } from '../login.guard';
 
 
 @NgModule({
@@ -20,8 +21,8 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
       {path:'reset',component:ResetComponent},
       {path:'passwordChange/:userId/:authToken',component:PasswordChangeComponent}
     ]),
-    
-  ],
   
+  ],
+  providers:[LoginGuardService]
 })
 export class UserModule { }

@@ -13,4 +13,8 @@ module.exports.setRouter = (app) => {
 
     app.post(`${baseUrl}/create`, scheduleController.createFunction);
 
+    app.post(`${baseUrl}/edit`, scheduleController.editschedule);
+    
+    app.post(`${baseUrl}/delete`, scheduleController.deleteSchedule);
+
 }
