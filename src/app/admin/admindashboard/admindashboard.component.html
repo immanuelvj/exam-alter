@@ -317,7 +317,63 @@
           </div>
         </div>
         <!-- end Schedule List-->
+        <!--req-->
+        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="staff">
+          <div class="col-xs-12">
 
+            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Received req for Schedule change
+            </p>
+            <div class="row" style="margin-top: 40px;">
+
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Name / Department</p>
+              </div>
+
+              <div class="col-xs-3">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo / Timing</p>
+              </div>
+
+              
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Assigned to </p>
+              </div>
+
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Action</p>
+              </div>
+              
+            </div>
+
+
+            <div class="row" style="margin-top:10px;" *ngFor="let req of req">
+
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.Name}} / {{req.Department}}</p>
+              </div>
+              <div class="col-xs-3">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.HallNo}} /<br> {{req.Date}}
+                </p>
+              </div>
+              
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.receiverName}} / {{req.receiverDepartment}}</p>
+              </div>
+              <div class="col-xs-2">
+                <button class="btn" (click)="acceptreq(req)"
+                style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Accept Request</button>
+  
+              </div>
+              <div class="col-xs-2">
+                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;"> <button class="btn" (click)="rejectreq(req)"
+                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Reject Request</button>
+    </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--end req-->
       </div>
 
     </div>

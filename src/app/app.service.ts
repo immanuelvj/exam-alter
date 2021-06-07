@@ -114,8 +114,40 @@ export class AppService {
   }
 
   
+  public userscheduleData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/schedule/user`,data);
+  }
+  
+  public userfreescheduleData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/schedule/freeuser`,data);
+  }
+
+  
   public createScheduleData(data): Observable<any> {
     return this.http.post(`${this.url}/api/v1/schedule/create`,data);
+  }
+
+  
+  public createreqData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/request/create`,data);
+  }
+
+  
+  public reqData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/request/getreq`,data);
+  }
+
+  public adminreqData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/request/getadminreq`,data);
+  }
+
+  public statusreqData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/request/getstatusreq`,data);
+  }
+
+  
+  public editreqData(data): Observable<any> {
+    return this.http.post(`${this.url}/api/v1/request/editreq`,data);
   }
 
   

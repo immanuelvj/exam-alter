@@ -17,4 +17,8 @@ module.exports.setRouter = (app) => {
     
     app.post(`${baseUrl}/delete`, scheduleController.deleteSchedule);
 
+    app.post(`${baseUrl}/user`, scheduleController.getUserData)
+    
+    app.post(`${baseUrl}/freeuser`, scheduleController.getfreeUser)
+
 }

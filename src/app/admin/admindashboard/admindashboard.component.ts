@@ -49,12 +49,15 @@ export class AdmindashboardComponent implements OnInit {
 
   public scheduleChange = []
 
+  public req = []
+
   constructor(public appService: AppService, public toastr: ToastrService,public router:Router) { }
 
   ngOnInit() {
 
     this.getallUser()
     this.getallSchedule()
+    this.getreq()
     this.create = true
     this.edit = false
     this.userId = null
@@ -427,5 +430,74 @@ export class AdmindashboardComponent implements OnInit {
       }
     })
   }
+
+  getreq = () =>{
+    let data = {
+      userId:Cookie.get('userId')
+    }
+    this.appService.adminreqData(data)
+    .subscribe((apiResponse)=>{
+
+      this.req = apiResponse.data
+
+    })
+  }
+
+
+  acceptreq = (data) =>{
+    data.status = `Request accepted by admin , schedule modified`
+    data.level = 'success'
+
+    let newdata = {
+      
+        scheduleId: data.scheduleId,
+        Name: data.receiverName,
+        userId: data.receiverId,
+        Department: data.receiverDepartment,
+        Date: data.Date,
+        HallNo:data.HallNo,
+        Slot:data.Slot,
+        examdate:data.examdate,
+      
+    }
+
+    this.appService.editScheduleData(newdata)
+    .subscribe((apiResponse)=>{
+
+      this.appService.editreqData(data)
+    .subscribe((apiResponse)=>{
+      if(apiResponse.status == '200'){
+        this.toastr.success('Request accepted ')
+        this.getreq()
+        this.getallSchedule()
+
+      }
+      else {
+        this.toastr.error(apiResponse.message)
+      }
+    })
+
+
+    })
+    
+  }
+
+  rejectreq = (data) =>{
+    data.status = `Request rejected by admin`
+    data.level = 'rejected'
+
+    this.appService.editreqData(data)
+    .subscribe((apiResponse)=>{
+      if(apiResponse.status == '200'){
+        this.toastr.success('Request is rejected ')
+        this.getreq()
+        this.getallSchedule()
+      }
+      else {
+        this.toastr.error(apiResponse.message)
+      }
+    })
+  }
+
 
 }
