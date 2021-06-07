@@ -10,9 +10,9 @@ module.exports.setRouter = (app) => {
     let baseUrl = `${appConfig.apiVersion}/users`;
 
 
-    app.get(`${baseUrl}/view/all`, userController.getAllUser);
+    app.post(`${baseUrl}/view/all`,auth.isAuthorized , userController.getAllUser);
 
-    app.get(`${baseUrl}/:userId/details`, userController.getSingleUser);
+    app.get(`${baseUrl}/:userId/details`, auth.isAuthorized ,userController.getSingleUser);
 
     app.post(`${baseUrl}/signup`, userController.signUpFunction);
 
@@ -23,7 +23,7 @@ module.exports.setRouter = (app) => {
 
     app.put(`${baseUrl}/:userId/edit`,  userController.editUser);
 
-    app.post(`${baseUrl}/delete`, userController.deleteUser);
+    app.post(`${baseUrl}/delete`, auth.isAuthorized ,userController.deleteUser);
 
     app.post(`${baseUrl}/recoverpassword`,userController.geneateRecover)
     

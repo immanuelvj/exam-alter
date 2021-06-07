@@ -9,16 +9,16 @@ module.exports.setRouter = (app) => {
     let baseUrl = `${appConfig.apiVersion}/schedule`;
 
 
-    app.get(`${baseUrl}/view/all`, scheduleController.getAllData);
+    app.post(`${baseUrl}/view/all`,auth.isAuthorized ,  scheduleController.getAllData);
 
-    app.post(`${baseUrl}/create`, scheduleController.createFunction);
+    app.post(`${baseUrl}/create`,auth.isAuthorized , scheduleController.createFunction);
 
-    app.post(`${baseUrl}/edit`, scheduleController.editschedule);
+    app.post(`${baseUrl}/edit`, auth.isAuthorized ,scheduleController.editschedule);
     
-    app.post(`${baseUrl}/delete`, scheduleController.deleteSchedule);
+    app.post(`${baseUrl}/delete`,auth.isAuthorized , scheduleController.deleteSchedule);
 
-    app.post(`${baseUrl}/user`, scheduleController.getUserData)
+    app.post(`${baseUrl}/user`,auth.isAuthorized , scheduleController.getUserData)
     
-    app.post(`${baseUrl}/freeuser`, scheduleController.getfreeUser)
+    app.post(`${baseUrl}/freeuser`,auth.isAuthorized , scheduleController.getfreeUser)
 
 }

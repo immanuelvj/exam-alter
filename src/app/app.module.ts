@@ -18,6 +18,7 @@ import { UserModule } from './user/user.module';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
 import { AdminModule } from './admin/admin.module';
 import { LoginGuardService } from './login.guard';
+import { RouteGuardService } from './route.guard';
 
 @NgModule({
   declarations: [
@@ -38,13 +39,13 @@ import { LoginGuardService } from './login.guard';
       { path: 'login', component:LoginComponent, canActivate:[LoginGuardService]},
       { path:'', redirectTo: 'login',pathMatch:'full'},
       {path:'faculty_schedule',component:FacultyScheduleComponent},
-      {path:'dashboard',component:DashboardComponent},
+      {path:'dashboard',component:DashboardComponent,canActivate:[RouteGuardService]},
       
       
     ]),
     HttpClientModule,
   ],
-  providers: [AppService,LoginGuardService],
+  providers: [AppService,LoginGuardService,RouteGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

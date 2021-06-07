@@ -93,65 +93,79 @@ export class AppService {
   }
 
   public getalluser(): Observable<any> {
-    return this.http.get(`${this.url}/api/v1/users/view/all`);
+    let data = {authToken : Cookie.get('authtoken')}
+    return this.http.post(`${this.url}/api/v1/users/view/all`,data);
   }
 
   public getuserData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.get(`${this.url}/api/v1/users/${data}/details`);
   }
 
   public edituserData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.put(`${this.url}/api/v1/users/${data.userId}/edit`,data);
   }
 
   public deleteuserData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/users/delete`,data);
   }
 
   
   public deletescheduleData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/schedule/delete`,data);
   }
 
   
   public userscheduleData(data): Observable<any> {
+    data.authTokem = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/schedule/user`,data);
   }
   
   public userfreescheduleData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/schedule/freeuser`,data);
   }
 
   
   public createScheduleData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/schedule/create`,data);
   }
 
   
   public createreqData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/request/create`,data);
   }
 
   
   public reqData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/request/getreq`,data);
   }
 
   public adminreqData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/request/getadminreq`,data);
   }
 
   public statusreqData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/request/getstatusreq`,data);
   }
 
   
   public editreqData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/request/editreq`,data);
   }
 
   
   public editScheduleData(data): Observable<any> {
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/schedule/edit`,data);
   }
 

@@ -8,13 +8,13 @@ module.exports.setRouter = (app) => {
 
     let baseUrl = `${appConfig.apiVersion}/request`;
 
-    app.post(`${baseUrl}/create`, requestController.createFunction);
+    app.post(`${baseUrl}/create`, auth.isAuthorized ,requestController.createFunction);
 
-    app.post(`${baseUrl}/getreq`, requestController.getAllData);
-    app.post(`${baseUrl}/getadminreq`, requestController.getadminData);
-    app.post(`${baseUrl}/getstatusreq`, requestController.getstatusData);
+    app.post(`${baseUrl}/getreq`,auth.isAuthorized , requestController.getAllData);
+    app.post(`${baseUrl}/getadminreq`,auth.isAuthorized ,requestController.getadminData);
+    app.post(`${baseUrl}/getstatusreq`,auth.isAuthorized , requestController.getstatusData);
     
-    app.post(`${baseUrl}/editreq`, requestController.editreq);
+    app.post(`${baseUrl}/editreq`, auth.isAuthorized ,requestController.editreq);
     
     
 
