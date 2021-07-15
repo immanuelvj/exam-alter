@@ -16,7 +16,7 @@ const scheduleModel = mongoose.model('Schedule')
 
 /* Get all user Details */
 let getAllData = (req, res) => {
-    scheduleModel.find()
+        scheduleModel.find()
 
         .exec((err, result) => {
             if (err) {
@@ -33,11 +33,11 @@ let getAllData = (req, res) => {
                 res.send(apiResponse)
             }
         })
-}// end get all users
+    } // end get all users
 
 
 let getUserData = (req, res) => {
-    scheduleModel.find({ 'userId': req.body.userId })
+        scheduleModel.find({ 'userId': req.body.userId })
 
         .exec((err, result) => {
             if (err) {
@@ -47,7 +47,7 @@ let getUserData = (req, res) => {
                 res.send(apiResponse)
             } else if (check.isEmpty(result)) {
                 logger.info('No Data Found', 'Schedule Controller: getAllData')
-                let apiResponse = response.generate(true, 'No Schedule Data Found', 404, null)
+                let apiResponse = response.generate(true, 'No user Schedule Data Found', 404, null)
                 res.send(apiResponse)
             } else {
                 let apiResponse = response.generate(false, 'All Schedule Data Found', 200, result)
@@ -55,7 +55,7 @@ let getUserData = (req, res) => {
 
             }
         })
-}// end get all users
+    } // end get all users
 
 
 let getfreeUser = (req, res) => {
@@ -64,20 +64,20 @@ let getfreeUser = (req, res) => {
         return new Promise((resolve, reject) => {
 
             console.log(1, req.body)
-            scheduleModel.find({ 'HallNo': req.body.HallNo, 'examdate': req.body.examdate, 'Slot': req.body.Slot })
+            scheduleModel.find({ 'examdate': req.body.examdate, 'Slot': req.body.Slot })
 
-                .exec((err, result) => {
-                    if (err) {
-                        console.log(err)
+            .exec((err, result) => {
+                if (err) {
+                    console.log(err)
 
 
-                    } else if (check.isEmpty(result)) {
-                        resolve(result)
+                } else if (check.isEmpty(result)) {
+                    resolve(result)
 
-                    } else {
-                        resolve(result)
-                    }
-                })
+                } else {
+                    resolve(result)
+                }
+            })
 
 
         })
@@ -97,16 +97,16 @@ let getfreeUser = (req, res) => {
                         reject(err)
 
                     } else if (check.isEmpty(result)) {
-                        
-                        ans [0] = scheduledUsers
-                        ans [1] = result 
-                        
+
+                        ans[0] = scheduledUsers
+                        ans[1] = result
+
                         resolve(ans)
 
                     } else {
-                        
-                        ans [0] = scheduledUsers
-                        ans [1] = result 
+
+                        ans[0] = scheduledUsers
+                        ans[1] = result
                         resolve(ans)
 
                     }
@@ -120,17 +120,17 @@ let getfreeUser = (req, res) => {
         return new Promise((resolve, reject) => {
             scheduledUsers = ans[0]
             users = ans[1]
-            console.log(scheduledUsers,users)
+            console.log(scheduledUsers, users)
 
             for (let i = 0; i < scheduledUsers.length; i++) {
                 for (let j = 0; j < users.length; j++) {
-                    if (users[j].userId == scheduledUsers[i].userId){
+                    if (users[j].userId == scheduledUsers[i].userId) {
                         index = j
-                    if (index > -1) {
-                        users.splice(index, 1);
-                    }
+                        if (index > -1) {
+                            users.splice(index, 1);
+                        }
 
-                 }
+                    }
 
                 }
 
@@ -161,10 +161,10 @@ let getfreeUser = (req, res) => {
 
 let createFunction = (req, res) => {
 
-    let checkData = () => {
-        return new Promise((resolve, reject) => {
+        let checkData = () => {
+            return new Promise((resolve, reject) => {
 
-            scheduleModel.find({ 'HallNo': req.body.HallNo, 'examdate': req.body.examdate, 'Slot': req.body.Slot })
+                scheduleModel.find({ 'HallNo': req.body.HallNo, 'examdate': req.body.examdate, 'Slot': req.body.Slot })
 
                 .exec((err, result) => {
                     if (err) {
@@ -183,76 +183,76 @@ let createFunction = (req, res) => {
                 })
 
 
-        })
-    }
-
-    let createData = (emptydata) => {
-        return new Promise((resolve, reject) => {
-
-            let newData = new scheduleModel({
-                scheduleId: shortid.generate(),
-                Name: req.body.Name,
-                Department: req.body.Department,
-                HallNo: req.body.HallNo,
-                Date: req.body.Date,
-                examdate: req.body.examdate,
-                userId: req.body.userId,
-                Slot: req.body.Slot,
-
             })
-            newData.save((err, newUser) => {
-                if (err) {
-                    console.log(err)
-                    logger.error(err.message, 'scheduleController: createData', 10)
-                    let apiResponse = response.generate(true, 'Failed to create new Data', 500, null)
-                    reject(apiResponse)
-                } else {
-                    let newUserObj = newUser.toObject();
-                    resolve(newUserObj)
-                }
-            })
+        }
 
-        })
+        let createData = (emptydata) => {
+                return new Promise((resolve, reject) => {
 
-    }// end create user function
+                    let newData = new scheduleModel({
+                        scheduleId: shortid.generate(),
+                        Name: req.body.Name,
+                        Department: req.body.Department,
+                        HallNo: req.body.HallNo,
+                        Date: req.body.Date,
+                        examdate: req.body.examdate,
+                        userId: req.body.userId,
+                        Slot: req.body.Slot,
 
-    checkData(req, res)
-        .then(createData)
+                    })
+                    newData.save((err, newUser) => {
+                        if (err) {
+                            console.log(err)
+                            logger.error(err.message, 'scheduleController: createData', 10)
+                            let apiResponse = response.generate(true, 'Failed to create new Data', 500, null)
+                            reject(apiResponse)
+                        } else {
+                            let newUserObj = newUser.toObject();
+                            resolve(newUserObj)
+                        }
+                    })
+
+                })
+
+            } // end create user function
+
+        checkData(req, res)
+            .then(createData)
 
         .then((resolve) => {
-            let apiResponse = response.generate(false, 'Data created', 200, resolve)
-            res.send(apiResponse)
-        })
-        .catch((err) => {
-            console.log(err);
-            res.send(err);
-        })
+                let apiResponse = response.generate(false, 'Data created', 200, resolve)
+                res.send(apiResponse)
+            })
+            .catch((err) => {
+                console.log(err);
+                res.send(err);
+            })
 
-}// end user signup function 
+    } // end user signup function 
 
 
 
 let editschedule = (req, res) => {
 
-    let options = req.body;
-    scheduleModel.updateOne({ 'scheduleId': req.body.scheduleId }, options).exec((err, result) => {
-        if (err) {
-            console.log(err)
-            logger.error(err.message, 'User Controller:editUser', 10)
-            let apiResponse = response.generate(true, 'Failed To edit user details', 500, null)
-            res.send(apiResponse)
-        } else if (check.isEmpty(result)) {
-            logger.info('No User Found', 'User Controller: editUser')
-            let apiResponse = response.generate(true, 'No Schedule Found', 404, null)
-            res.send(apiResponse)
-        } else {
-            let apiResponse = response.generate(false, 'Schedule details edited', 200, result)
-            res.send(apiResponse)
-        }
-    });// end user model update
+        let options = req.body;
+        scheduleModel.updateOne({ 'scheduleId': req.body.scheduleId }, options).exec((err, result) => {
+            if (err) {
+                console.log(err)
+                logger.error(err.message, 'User Controller:editUser', 10)
+                let apiResponse = response.generate(true, 'Failed To edit user details', 500, null)
+                res.send(apiResponse)
+            } else if (check.isEmpty(result)) {
+                logger.info('No User Found', 'User Controller: editUser')
+                let apiResponse = response.generate(true, 'No Schedule Found', 404, null)
+                res.send(apiResponse)
+            } else {
+                let apiResponse = response.generate(false, 'Schedule details edited', 200, result)
+                res.send(apiResponse)
+            }
+        }); // end user model update
 
 
-}// end edit user
+    } // end edit user
 
 
 
@@ -262,7 +262,7 @@ let deleteSchedule = (req, res) => {
 
         scheduleModel.findOneAndRemove({ 'scheduleId': req.body.scheduleId[i] }).exec((err, result) => {
 
-        });// end user model find and remove
+        }); // end user model find and remove
 
 
         let apiResponse = response.generate(false, 'Schedule details deleted', 200, 'deleted')

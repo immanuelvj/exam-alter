@@ -29,6 +29,9 @@ export class PasswordChangeComponent implements OnInit {
 
   }
 
+  routeToFacSchedule(){
+
+  }
   //reset password
   passwordreset = () => {
     console.log(this.userId)

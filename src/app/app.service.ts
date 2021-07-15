@@ -120,7 +120,7 @@ export class AppService {
 
   
   public userscheduleData(data): Observable<any> {
-    data.authTokem = Cookie.get('authtoken')
+    data.authToken = Cookie.get('authtoken')
     return this.http.post(`${this.url}/api/v1/schedule/user`,data);
   }
   

@@ -21,6 +21,10 @@ export class ResetComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  routeToFacSchedule(){
+
+  }
 
   //reset functionality for UserName and 
   reset = () => {

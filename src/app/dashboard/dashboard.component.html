@@ -1,263 +1,256 @@
 <div class="container-fluid background">
 
-  <div class="row">
-    <div class="col-xs-12">
+    <div class="row">
+        <div class="col-xs-12">
 
 
-      <div class="insidebox" style="padding:40px;">
-        <!-- nav-->
-        <div class="row text-center">
-          <div class="col-xs-3" (click)="activate('exam')" style="padding: 5px;cursor: pointer;"
-            [ngClass]="{'isactive':exam == true,'isnotactive':exam == false}">
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Assigned Exam Schedules</p>
-          </div>
-          <div class="col-xs-3" (click)="activate('rexam')" style="padding: 5px;cursor: pointer;"
-            [ngClass]="{'isactive':rexam == true,'isnotactive':rexam == false}">
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Reassign Exam Schedules</p>
-          </div>
-          <div class="col-xs-3" (click)="activate('rsexam')" style="padding: 5px;cursor: pointer;"
-            [ngClass]="{'isactive':rsexam == true,'isnotactive':rsexam == false}">
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Accept / Reject request</p>
-          </div>
-          <div class="col-xs-2" (click)="activate('rssexam')" style="padding: 5px;cursor: pointer;"
-            [ngClass]="{'isactive':rssexam == true,'isnotactive':rssexam == false}">
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Request Status</p>
-          </div>
+            <div class="insidebox" style="padding:40px;">
+                <!-- nav-->
+                <div class="row text-center">
+                    <div class="col-xs-3" (click)="activate('exam')" style="padding: 5px;cursor: pointer;" [ngClass]="{'isactive':exam == true,'isnotactive':exam == false}">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Assigned Exam Schedules</p>
+                    </div>
+                    <div class="col-xs-3" (click)="activate('rexam')" style="padding: 5px;cursor: pointer;" [ngClass]="{'isactive':rexam == true,'isnotactive':rexam == false}">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Reassign Exam Schedules</p>
+                    </div>
+                    <div class="col-xs-3" (click)="activate('rsexam')" style="padding: 5px;cursor: pointer;" [ngClass]="{'isactive':rsexam == true,'isnotactive':rsexam == false}">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Accept / Reject request</p>
+                    </div>
+                    <div class="col-xs-2" (click)="activate('rssexam')" style="padding: 5px;cursor: pointer;" [ngClass]="{'isactive':rssexam == true,'isnotactive':rssexam == false}">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Request Status</p>
+                    </div>
 
-          <div class="col-xs-1 hover" style="padding: 5px;cursor: pointer;" (click)="logout()">
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;text-align: right;">Logout</p>
-          </div>
-        </div>
-        <!-- end nav -->
+                    <div class="col-xs-1 hover" style="padding: 5px;cursor: pointer;" (click)="logout()">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;text-align: right;">Logout</p>
+                    </div>
+                </div>
+                <!-- end nav -->
 
-        <!-- exam -->
+                <!-- exam -->
 
-        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="exam">
-          <div class="col-xs-12">
+                <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="exam">
+                    <div class="col-xs-12">
 
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Assigned Exam Schedules
-            </p>
-            <div class="row" style="margin-top: 40px;">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Assigned Exam Schedules
+                        </p>
+                        <div class="row" style="margin-top: 40px;">
 
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Name</p>
-              </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Name</p>
+                            </div>
 
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Department</p>
-              </div>
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo</p>
-              </div>
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Date & Time Slot</p>
-              </div>
-            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Department</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Date & Time Slot</p>
+                            </div>
+                        </div>
 
 
-            <div class="row" style="margin-top:10px;" *ngFor="let schedule of schedules">
+                        <div class="row" style="margin-top:10px;" *ngFor="let schedule of schedules">
 
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Name}}</p>
-              </div>
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Department}}
-                </p>
-              </div>
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.HallNo}}</p>
-              </div>
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Date}}</p>
-              </div>
-            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Name}}</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Department}}
+                                </p>
+                            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.HallNo}}</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{schedule.Date}}</p>
+                            </div>
+                        </div>
 
-          </div>
-        </div>
+                    </div>
+                </div>
 
 
-        <!--end exam -->
+                <!--end exam -->
 
-        <!-- rexam -->
+                <!-- rexam -->
 
-        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="rexam">
-          <div class="col-xs-12">
+                <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="rexam">
+                    <div class="col-xs-12">
 
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Request a reassign
-            </p>
-            <div class="row" style="margin-top:40px">
-              <div class="col-xs-6">
-                <select [(ngModel)]="scheduleId" (click)="changevalueschedule()" placeholder="Select a Schedule">
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Request a reassign
+                        </p>
+                        <div class="row" style="margin-top:40px">
+                            <div class="col-xs-6">
+                                <select [(ngModel)]="scheduleId" (click)="changevalueschedule()" placeholder="Select a Schedule">
                   <option [value]="null">Select a Schedule</option>
                   <option *ngFor="let obj of schedules" [value]="obj.scheduleId">{{obj.HallNo}} {{obj.Date}}</option>
                 </select>
 
-              </div>
-            </div>
-            <div class="row" style="margin-top:40px">
-              <div class="col-xs-6">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:40px">
+                            <div class="col-xs-6">
 
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Name : {{examinername}}</p>
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Name : {{examinername}}</p>
 
-              </div>
-              <div class="col-xs-6">
+                            </div>
+                            <div class="col-xs-6">
 
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Department : {{examinerdepartment}}</p>
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Department : {{examinerdepartment}}</p>
 
-              </div>
-            </div>
+                            </div>
+                        </div>
 
-            <div class="row" style="margin-top: 40px;">
-              <div class="col-xs-6">
+                        <div class="row" style="margin-top: 40px;">
+                            <div class="col-xs-6">
 
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">HallNo : {{hallNo}}</p>
-  
-              </div>
-              <div class="col-xs-6">
-  
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Timing : {{examdate}}</p>
-  
-              </div>
-            </div>
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">HallNo : {{hallNo}}</p>
 
-            <div class="row" style="margin-top: 40px;">
+                            </div>
+                            <div class="col-xs-6">
 
-              <div class="col-xs-1">
-                
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Reassign to :</p>
-              </div>
-              <div class="col-xs-6">
-                <select [(ngModel)]="reUserId"  placeholder="Select a User">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Timing : {{examdate}}</p>
+
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 40px;">
+
+                            <div class="col-xs-1">
+
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;">Reassign to :</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <select [(ngModel)]="reUserId" placeholder="Select a User">
                   <option [value]="null">Select a User</option>
                   <option *ngFor="let obj of freeuser" [ngValue]="obj">{{obj.firstName}} {{obj.lastName}} - {{obj.department}}</option>
                 </select>
-              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-top:40px;">
+                            <div class="col-xs-12 text-center">
+
+                                <button class="btn" (click)="sendreq()" style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Send Request</button>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <!--end rexam -->
+
+                <!--rs exam -->
+                <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="rsexam">
+                    <div class="col-xs-12">
+
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Received req for Schedule change
+                        </p>
+                        <div class="row" style="margin-top: 40px;">
+
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Name / Department</p>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo / Timing</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Action</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row" style="margin-top:10px;" *ngFor="let req of req">
+
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.Name}} / {{req.Department}}</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.HallNo}} / {{req.Date}}
+                                </p>
+                            </div>
+                            <div class="col-xs-2">
+                                <button class="btn" (click)="acceptreq(req)" style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Accept Request</button>
+
+                            </div>
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;"> <button class="btn" (click)="rejectreq(req)" style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Reject Request</button>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--re exam-->
+
+                <!-- exam -->
+
+                <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="rssexam">
+                    <div class="col-xs-12">
+
+                        <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Status of request
+                        </p>
+                        <div class="row" style="margin-top: 40px;">
+
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo</p>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Timing</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Assigned to </p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Status</p>
+                            </div>
+
+                        </div>
+                        <div class="row" style="margin-top: 40px;" *ngFor="let req of statusreq">
+
+                            <div class="col-xs-2">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.HallNo}}</p>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.Date}}</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.receiverName}}/{{req.receiverDepartment}}</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.status}}</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!--end exam -->
+
             </div>
 
-
-            <div class="row" style="margin-top:40px;">
-              <div class="col-xs-12 text-center">
-    
-                <button class="btn" (click)="sendreq()"
-                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Send Request</button>
-    
-              </div>
-    
-            </div>
-    
-
-
-          </div>
         </div>
-
-
-        <!--end rexam -->
-
-        <!--rs exam -->
-        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="rsexam">
-          <div class="col-xs-12">
-
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Received req for Schedule change
-            </p>
-            <div class="row" style="margin-top: 40px;">
-
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Name / Department</p>
-              </div>
-
-              <div class="col-xs-4">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo / Timing</p>
-              </div>
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Action</p>
-              </div>
-              
-            </div>
-
-
-            <div class="row" style="margin-top:10px;" *ngFor="let req of req">
-
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.Name}} / {{req.Department}}</p>
-              </div>
-              <div class="col-xs-4">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.HallNo}} / {{req.Date}}
-                </p>
-              </div>
-              <div class="col-xs-2">
-                <button class="btn" (click)="acceptreq(req)"
-                style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Accept Request</button>
-  
-              </div>
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;"> <button class="btn" (click)="rejectreq(req)"
-                  style="background-color: #b81250;font-family:Montserrat,sans-serif;font-size: 16px;color:white">Reject Request</button>
-    </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!--re exam-->
-
-        <!-- exam -->
-
-        <div class="row" style="padding: 80px;padding-top:50px;" *ngIf="rssexam">
-          <div class="col-xs-12">
-
-            <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Status of request 
-            </p>
-            <div class="row" style="margin-top: 40px;" *ngFor="let req of statusreq">
-
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">HallNo</p>
-              </div>
-
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Timing</p>
-              </div>
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Assigned to </p>
-              </div>
-              <div class="col-xs-4">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 800;">Status</p>
-              </div>
-              
-            </div>
-            <div class="row" style="margin-top: 40px;" *ngFor="let req of statusreq">
-
-              <div class="col-xs-2">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.HallNo}}</p>
-              </div>
-
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.Date}}</p>
-              </div>
-              <div class="col-xs-3">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.receiverName}}/{{req.receiverDepartment}}</p>
-              </div>
-              <div class="col-xs-4">
-                <p style="font-size: 16px;font-family: Montserrat,sans-serif;font-weight: 500;">{{req.status}}</p>
-              </div>
-              
-            </div>
-
-          </div>
-        </div>
-
-
-        <!--end exam -->
-
-      </div>
-
     </div>
-  </div>
 
 
-  <div class="row text-center" style="margin-top: 30px;">
-    <p style="font-family:Montserrat;font-weight: 800;">Designed and Developed by the JUSTICE LEAGUE OF AMRITA CBE</p>
-  </div>
+    <div class="row text-center" style="margin-top: 30px;">
+        <p style="font-family:Montserrat;font-weight: 800;">Designed and Developed by the JUSTICE LEAGUE OF AMRITA CBE</p>
+    </div>
 
 
 
