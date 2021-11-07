@@ -18,6 +18,7 @@ module.exports.setRouter = (app) => {
 
     app.post(`${baseUrl}/login`, userController.loginFunction);
 
+    app.post(`${baseUrl}/otplogin`, userController.OtpVerify);
 
     app.post(`${baseUrl}/adminlogin`, userController.adminloginFunction);
 

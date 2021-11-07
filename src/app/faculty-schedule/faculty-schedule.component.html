@@ -1,73 +1,73 @@
 <div class="container-fluid background" style="overflow: hidden;">
-  <!--Inside Container Box-->
-  <div class="row">
- 
-    <div class="col-xs-12">
-      <div class="insidebox">
+    <!--Inside Container Box-->
+    <div class="row">
 
-       
-        <div class="row">
-          <div class="col-xs-6" style="padding:20px;">
-            <img src="../../assets/logo.png" alt="college_logo" style="width:70%;cursor: pointer;" (click)="movetoLogin()"/>
-           
-          </div>
-          <div class="col-xs-6" style="padding:20px">
-            <p style="font-family: Montserrat,sans-serif;font-size: 10px;margin-left: 50px;margin-top: 0px;text-align: right;margin-right: 20px;font-weight: 900;"> * ( Click logo to redirect to login page )</p>
-            
-          </div>
-        </div>
-      
-        <div class="row" *ngIf="!notfound">
-          <div class="col-xs-8 col-xs-offset-2" style="max-height:480px;overflow:auto">
-            
-            <!--data-->
-            <div class="row">
-              <div class="col-xs-2" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
-                <p class="headingfont">Hall no </p>
-              </div>
-              <div class="col-xs-7" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
-                <p class="headingfont">Faculty Name - Department </p>
-              </div>
-              <div class="col-xs-3" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
-                <p class="headingfont">Date & Time </p>
-              </div>
+        <div class="col-xs-12">
+            <div class="insidebox">
+
+
+                <div class="row">
+                    <div class="col-xs-6" style="padding:20px;">
+                        <img src="../../assets/logo.png" alt="college_logo" style="width:70%;cursor: pointer;" (click)="movetoLogin()" />
+
+                    </div>
+                    <div class="col-xs-6" style="padding:20px">
+                        <p style="font-family: Montserrat,sans-serif;font-size: 10px;margin-left: 50px;margin-top: 0px;text-align: right;margin-right: 20px;font-weight: 900;"> * ( Click logo to redirect to login page )</p>
+
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="!notfound">
+                    <div class="col-xs-8 col-xs-offset-2" style="max-height:480px;overflow:auto">
+
+                        <!--data-->
+                        <div class="row">
+                            <div class="col-xs-2" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
+                                <p class="headingfont">Hall no </p>
+                            </div>
+                            <div class="col-xs-7" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
+                                <p class="headingfont">Faculty Name - Department </p>
+                            </div>
+                            <div class="col-xs-3" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
+                                <p class="headingfont">Date & Time </p>
+                            </div>
+
+                        </div>
+                        <div class="row" *ngFor="let data of datas">
+                            <div class="col-xs-2 bodybg" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
+                                <p class="bodyfont">{{data.HallNo}}</p>
+                            </div>
+                            <div class="col-xs-7 bodybg" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
+                                <p class="bodyfont">{{data.Name}} - {{data.Department}}</p>
+                            </div>
+                            <div class="col-xs-3 bodybg" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
+                                <p class="bodyfont">{{data.Date}}</p>
+                            </div>
+
+                        </div>
+                        <!--end data-->
+
+                    </div>
+                </div>
+
+
+                <div class="row" *ngIf="notfound">
+                    <div class="col-xs-6 " style="display: flex;align-items: center;justify-content: center;">
+                        <img src="../../assets/oldman.png" alt="data_not_available" style="width:250px;" />
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="headingfont" style="font-size: 30px;font-weight: 500;margin-top: 50px;">Hello , I am admin </p>
+                        <p class="headingfont" style="font-size: 25px;color:black;font-weight: 500;">I am still working on the schedule ,<br> I request you to wait</p>
+
+                        <p class="headingfont" style="font-size: 25px;font-weight: 500;margin-top: 50px;">Thanks & Regards ,
+                            <br> Admin</p>
+                    </div>
+                </div>
 
             </div>
-            <div class="row" *ngFor="let data of datas">
-              <div class="col-xs-2 bodybg" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
-                <p class="bodyfont">{{data.HallNo}}</p>
-              </div>
-              <div class="col-xs-7 bodybg" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
-                <p class="bodyfont">{{data.Name}} - {{data.Department}}</p>
-              </div>
-              <div class="col-xs-3 bodybg" style="border:1px solid #b81250;text-align: center;padding:10px 0;">
-                <p class="bodyfont">{{data.Date}}</p>
-              </div>
-
-            </div>
-            <!--end data-->
-
-          </div>
         </div>
 
 
-        <div class="row" *ngIf="notfound">
-          <div class="col-xs-6 " style="display: flex;align-items: center;justify-content: center;">
-            <img src="../../assets/oldman.png" alt="data_not_available"  style="width:250px;"/>
-          </div>
-          <div class="col-xs-6">
-            <p class="headingfont" style="font-size: 30px;font-weight: 500;margin-top: 50px;">Hello , I am admin </p>
-            <p class="headingfont" style="font-size: 25px;color:black;font-weight: 500;">I am still working on the schedule ,<br> I request you to wait</p>
 
-            <p class="headingfont" style="font-size: 25px;font-weight: 500;margin-top: 50px;">Thanks & Regards ,
-            <br> Admin</p>
-          </div>
-        </div>
-
-      </div>
     </div>
-  
-  
-  
-  </div>
 </div>

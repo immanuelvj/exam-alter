@@ -1,81 +1,90 @@
 <div class="container-fluid background">
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="insidebox">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="insidebox">
 
-        <div class="row">
-          <div class="col-xs-6" style="padding:20px;">
-            <img src="../../assets/logo.png" style="width:70%;" alt="college_logo" />
-            <img src="../../assets/undraw_exams_g4ow.svg" alt="exam_image" style="width:100%;" />
-          </div>
+                <div class="row">
+                    <div class="col-xs-6" style="padding:20px;">
+                        <img src="../../assets/logo.png" style="width:70%;" alt="college_logo" />
+                        <img src="../../assets/undraw_exams_g4ow.svg" alt="exam_image" style="width:100%;" />
+                    </div>
 
-          <div class="col-xs-6 text-center" style="margin:0px;padding: 10px;padding-left: 0px;margin-top:2px">
+                    <div class="col-xs-6 text-center" style="margin:0px;padding: 10px;padding-left: 0px;margin-top:2px">
 
-            <div class="row" style="margin-left:10px;margin-top:100px;">
-              <div class="col-xs-10">
+                        <div class="row" style="margin-left:10px;margin-top:100px;">
+                            <div class="col-xs-10">
 
-                <p style="font-family: Orelega One ,cursive;font-size:4.5rem;font-weight: 300px;"><span><img alt="user"
-                      src="../../assets/vector-creator.png" style="width:80px;" /> Login</span><span
-                    style="font-family: Montserrat,sans-serif;;font-size: 2rem;margin-left: 20px;font-weight:700;">-
+                                <p style="font-family: Orelega One ,cursive;font-size:4.5rem;font-weight: 300px;"><span><img alt="user"
+                      src="../../assets/vector-creator.png" style="width:80px;" /> Login</span><span style="font-family: Montserrat,sans-serif;;font-size: 2rem;margin-left: 20px;font-weight:700;">-
                     Faculty Portal</span></p>
 
-              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-left:100px;margin-top:40px;" *ngIf="otp">
+                            <div class="col-xs-10">
+
+                                <input type="text" placeholder="Enter Username" [(ngModel)]="email" name="email" id="email" (keydown.enter)="login()" />
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left:100px;margin-top:50px;" *ngIf="otp">
+                            <div class="col-xs-10">
+
+                                <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" id="password" (keydown.enter)="login()" />
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left:100px;margin-top:70px;" *ngIf="otp">
+                            <div class="col-xs-10">
+
+                                <button type="submit" (click)="login()" class="btn" style="background-color:#b81250;width: 60%;height: 50px;border-radius: 40px;border:0px;color: white;font-size:20px;font-family:Montserrat,sans-serif;;">Login</button>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-left:100px;margin-top:40px;" *ngIf="!otp">
+                            <div class="col-xs-10">
+
+                                <input type="text" placeholder="Enter Otp" [(ngModel)]="otpnumber" name="otpnumber" id="otpnumber" (keydown.enter)="otplogin()" />
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-left:100px;margin-top:70px;" *ngIf="!otp">
+                            <div class="col-xs-10">
+
+                                <button type="submit" (click)="otplogin()" class="btn" style="background-color:#b81250;width: 60%;height: 50px;border-radius: 40px;border:0px;color: white;font-size:20px;font-family:Montserrat,sans-serif;;">Login</button>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left:100px;margin-top:30px;">
+                            <div class="col-xs-10">
+                                <p style="font-family:Montserrat, sans-serif;cursor: pointer;" id="forget_password" [routerLink]="['/reset']">Forgot Password ? Reset Now</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left:100px;margin-top:20px;">
+                            <div class="col-xs-10">
+
+                                <button (click)="routeToFacSchedule()" class="btn blink" style="color:#b81250;width: 60%;height: 50px;border:0px;border: 1px solid #b81250;font-size:20px;font-family:Montserrat,sans-serif;;font-weight: 800;" id="faculty_schedule">Faculty Schedule</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
             </div>
 
-
-            <div class="row" style="margin-left:100px;margin-top:40px;">
-              <div class="col-xs-10">
-
-                <input type="text" placeholder="Enter Username" [(ngModel)]="email" name="email" id="email"
-                  (keydown.enter)="login()" />
-              </div>
-            </div>
-
-            <div class="row" style="margin-left:100px;margin-top:50px;">
-              <div class="col-xs-10">
-
-                <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" id="password"
-                  (keydown.enter)="login()" />
-              </div>
-            </div>
-
-            <div class="row" style="margin-left:100px;margin-top:70px;">
-              <div class="col-xs-10">
-
-                <button type="submit" (click)="login()" class="btn"
-                  style="background-color:#b81250;width: 60%;height: 50px;border-radius: 40px;border:0px;color: white;font-size:20px;font-family:Montserrat,sans-serif;;">Login</button>
-              </div>
-            </div>
-
-            <div class="row" style="margin-left:100px;margin-top:30px;">
-              <div class="col-xs-10">
-                <p style="font-family:Montserrat, sans-serif;cursor: pointer;" id="forget_password"
-                  [routerLink]="['/reset']">Forgot Password ? Reset Now</p>
-              </div>
-            </div>
-
-            <div class="row" style="margin-left:100px;margin-top:20px;">
-              <div class="col-xs-10">
-
-                <button (click)="routeToFacSchedule()" class="btn blink"
-                  style="color:#b81250;width: 60%;height: 50px;border:0px;border: 1px solid #b81250;font-size:20px;font-family:Montserrat,sans-serif;;font-weight: 800;"
-                  id="faculty_schedule">Faculty Schedule</button>
-              </div>
-            </div>
-
-
-
-          </div>
         </div>
-
-      </div>
-
     </div>
-  </div>
 
 
-  <div class="row text-center">
-    <p style="font-family:Montserrat;font-weight: 800;">Designed and Developed by the JUSTICE LEAGUE OF AMRITA CBE</p>
-  </div>
+    <div class="row text-center">
+        <p style="font-family:Montserrat;font-weight: 800;">Designed and Developed by the JUSTICE LEAGUE OF AMRITA CBE</p>
+    </div>
 </div>

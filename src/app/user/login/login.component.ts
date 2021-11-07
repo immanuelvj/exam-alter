@@ -13,10 +13,12 @@ export class LoginComponent implements OnInit {
 
   public email
   public password
+  public otp
+  public otpnumber
   constructor(private toastr: ToastrService,public appService:AppService,public router:Router) {}
 
   ngOnInit() {
-
+      this.otp = true;
       }
   
   login_enter = (event:any) =>{
@@ -38,23 +40,24 @@ export class LoginComponent implements OnInit {
 
       this.appService.signinFunction(data)
         .subscribe((apiResponse) => {
-
+          console.log(apiResponse)
           if (apiResponse.status === 200) {
-            this.toastr.success('Login Succesful')
+            this.toastr.success('Password verified ! Otp Verification required')
+            
+            this.otp = false;
+//            Cookie.set('authtoken', apiResponse.data.authToken);
 
-            Cookie.set('authtoken', apiResponse.data.authToken);
+            Cookie.set('userId', apiResponse.data.data.data.userId);
 
-            Cookie.set('userId', apiResponse.data.userDetails.userId);
-
-            Cookie.set('userName', apiResponse.data.userDetails.firstName + ' ' + apiResponse.data.userDetails.lastName);
+            Cookie.set('userName', apiResponse.data.data.data.firstName + ' ' + apiResponse.data.data.data.lastName);
 
             this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails)
 
-            this.router.navigate(['/dashboard']);
-            
+//            this.router.navigate(['/dashboard']);
 
           } else {
             this.toastr.error(apiResponse.message)
+
           
           }
 
@@ -67,6 +70,26 @@ export class LoginComponent implements OnInit {
     // end condition
 
     }
+  }
+
+  otplogin = () => {
+    let data = {
+      otp:this.otpnumber,
+      userId:Cookie.get('userId')
+    }
+    this.appService.otpFunction(data)
+    .subscribe((apiResponse)=>{
+      if(apiResponse.status == 200 ){
+        Cookie.set('authtoken', apiResponse.data.authToken);
+        this.router.navigate(['/dashboard']); 
+      } 
+      else {
+        this.toastr.error(apiResponse.message)
+
+      
+      }
+
+    })
   }
 
   routeToFacSchedule = () =>{

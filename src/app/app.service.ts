@@ -53,6 +53,14 @@ export class AppService {
     return this.http.post(`${this.url}/api/v1/users/login`, params);
   } // end of signinFunction function.
 
+  public otpFunction(data): Observable<any> {
+
+    const params = new HttpParams()
+      .set('userId', data.userId)
+      .set('otp', data.otp);
+
+    return this.http.post(`${this.url}/api/v1/users/otplogin`, params);
+  } // end of signinFunction function.
 
 
   public adminsigninFunction(data): Observable<any> {
